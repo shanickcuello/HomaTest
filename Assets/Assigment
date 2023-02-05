@@ -1,0 +1,32 @@
+Time frame : 1 week
+
+1) Develop a Classic Sudoku game focusing on the game feel, its mechanics, and a satisfying core interaction & its
+code scalability & reusability
+
+2) Make a playable (60 fps) & solid (no crash) version of the game on Unity3D for Android or iOS
+
+3) Your game must have these elements:
+- 1 or 2 levels (maximum) looping
+- Simple UI
+- A huge focus on exeuction / toy / animation / juicyness / particles
+
+Explain which parts of the code could be implemented as independent modules to allow faster development of
+similar gamesbin the future, giving a brief explanation of your choices and how they would work.
+
+Your project will be evaluated considering the following factors:
+- General game feel.
+-  Unity project structure.
+-  Code readability and re-usability.
+
+4) Please send us back (Drive document) :
+- The source code (full Unity3D Project on Github) for review purpose
+- An Android or iOS build for testing purpose
+- Alin to a short gameplay video of your game
+
+This test will allow us to evaluate not only your developers skills on Unity3D (clean & efficient code) but also your
+creativity and UI sensitivity.
+
+Now time to execute!
+
+This test is for recruiting purpose only, the work you provided with (code & design) for it remains totally personal
+and won't be used for any commercial purpose by Homa Games.

@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UIElements
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8e78f3d753e234ff8ad68f6ba85a30e6, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -1524427601, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -1645153712, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: 1924839867, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -1099659984, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -255521387, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: 2103335010, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -1185594301, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -1227720471, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -809369642, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: 132448502, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: 1577613690, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -1338724769, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: -1726273893, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: 1483089096, guid: 5b847010749ac42a694625962994708f, type: 3}
+  - {fileID: 6958448073824267329, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: 2047941088327631854, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: 3424276420705205786, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -5998642144344791252, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -757315726112209617, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -3940985153092448986, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -954801371453465581, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -8348628304252705202, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -2838618716628836524, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -5067035374483290437, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -2181702170622515440, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  - {fileID: -3623191002604620937, guid: e291dc6a55a7a47639ed15fd830f1787, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - systemIcon
+  - checkIcon
+  - musicIcon
+  - hint1
+  - hint2
+  - hint3
+  - hint4
+  - hint5
+  - saveIcon
+  - eraserIcon
+  - soundIcon
+  - backIcon
+  - exitIcon
+  - hintWheelIcon
+  - circleEmpty
+  - starEmpty
+  - starFill
+  - circleFill
+  - levelBar
+  - zeroPad
+  - littleBars
+  - difficulty
+  - logoBox
+  - button
+  - pad
+  - separator
+  m_RenderDataMap: {}
+  m_Tag: UIElements
+  m_IsVariant: 0
