@@ -7,19 +7,12 @@ namespace Sudoku.Difficulty
         [Range(0, 81)] [SerializeField] private int piecesToErase;
         [Range(0, 81)] [SerializeField] private int maxHints;
         [SerializeField] private string nameDisplay;
-        
-        public int MaxHints
-        {
-            get => maxHints;
-        }
+        public int MaxHints => maxHints;
         public string Name
         {
-            get=>nameDisplay;
+            get => nameDisplay;
             set => nameDisplay = value;
         }
-        public int PiecesToErase
-        {
-            get => piecesToErase;
-        }
+        public int PiecesToErase => piecesToErase;
     }
 }

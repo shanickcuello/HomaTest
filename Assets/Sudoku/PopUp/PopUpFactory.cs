@@ -1,17 +1,21 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 namespace Sudoku.PopUp
 {
     public class PopUpFactory : MonoBehaviour
     {
         [SerializeField] private PopUpView _popUpViewPrefab;
+        [SerializeField] private ButtonWithAction buttonWithActionPrefabPrefab;
         public static PopUpFactory Instance;
-        public void Create(Action onConfirmButtonClicked, string text, string buttonText = "Ok!")
+        public void Create(PopUpProperties popUpProperties)
         {
-            Instantiate(_popUpViewPrefab, transform)
-                .SetConfirmButtonCallback(onConfirmButtonClicked)
-                .SetTitle(text)
-                .SetButtonText(buttonText);
+            var popUpView = Instantiate(_popUpViewPrefab, transform).SetTitle(popUpProperties.title);
+            var layoutGroupTranform = popUpView.GetHorizontalLayoutGroup();
+            foreach (var button in popUpProperties.buttons)
+                Instantiate(buttonWithActionPrefabPrefab, layoutGroupTranform)
+                    .SetAction(button.Value)
+                    .SetText(button.Key)
+                    .SetPopUpView(popUpView);
         }
         private void Awake()
         {

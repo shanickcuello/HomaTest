@@ -14,10 +14,7 @@ namespace Sudoku.Board
         private int _maxHint;
         private string _debugText;
         private int _piecesToErase;
-        public int[,] RiddleGrid
-        {
-            get => _riddleGrid;
-        }
+        public int[,] RiddleGrid => _riddleGrid;
         public BoardViewModel(IDifficultySettings difficultySettings, Action gridPrepared, Action<bool> onFinished)
         {
             _piecesToErase = difficultySettings.PiecesToErase;
@@ -41,7 +38,7 @@ namespace Sudoku.Board
         {
             if (_maxHint <= 0) return false;
             if (fieldList.Count <= 0) return false;
-            int randomIndex = Random.Range(0, fieldList.Count);
+            var randomIndex = Random.Range(0, fieldList.Count);
             _maxHint--;
             RiddleGrid[fieldList[randomIndex].GetX(), fieldList[randomIndex].GetY()] =
                 _solvedGrid[fieldList[randomIndex].GetX(), fieldList[randomIndex].GetY()];
@@ -55,11 +52,11 @@ namespace Sudoku.Board
         {
 #if UNITY_EDITOR
             _debugText = "";
-            int separator = 0;
-            for (int i = 0; i < 9; i++)
+            var separator = 0;
+            for (var i = 0; i < 9; i++)
             {
                 _debugText += "|";
-                for (int j = 0; j < 9; j++)
+                for (var j = 0; j < 9; j++)
                 {
                     _debugText += grid[i, j].ToString();
                     separator = j % 3;
@@ -73,10 +70,10 @@ namespace Sudoku.Board
         }
         private void ShuffleGrid(ref int[,] grid, int shuffleAmount)
         {
-            for (int i = 0; i < shuffleAmount; i++)
+            for (var i = 0; i < shuffleAmount; i++)
             {
-                int value1 = Random.Range(1, 10);
-                int value2 = Random.Range(1, 10);
+                var value1 = Random.Range(1, 10);
+                var value2 = Random.Range(1, 10);
                 //Aca tenfgo que mixear las seldas
                 MixTwoGridCells(ref grid, value1, value2);
             }
@@ -84,51 +81,43 @@ namespace Sudoku.Board
         }
         private void MixTwoGridCells(ref int[,] grid, int value1, int value2)
         {
-            int x1 = 0;
-            int x2 = 0;
-            int y1 = 0;
-            int y2 = 0;
-            for (int i = 0; i < 9; i += 3)
+            var x1 = 0;
+            var x2 = 0;
+            var y1 = 0;
+            var y2 = 0;
+            for (var i = 0; i < 9; i += 3)
+            for (var k = 0; k < 9; k += 3)
             {
-                for (int k = 0; k < 9; k += 3)
+                for (var j = 0; j < 3; j++)
+                for (var l = 0; l < 3; l++)
                 {
-                    for (int j = 0; j < 3; j++)
+                    if (grid[i + j, k + l] == value1)
                     {
-                        for (int l = 0; l < 3; l++)
-                        {
-                            if (grid[i + j, k + l] == value1)
-                            {
-                                x1 = i + j;
-                                y1 = k + l;
-                            }
-                            if (grid[i + j, k + l] == value2)
-                            {
-                                x2 = i + j;
-                                y2 = k + l;
-                            }
-                        }
+                        x1 = i + j;
+                        y1 = k + l;
                     }
-                    grid[x1, y1] = value2;
-                    grid[x2, y2] = value1;
+                    if (grid[i + j, k + l] == value2)
+                    {
+                        x2 = i + j;
+                        y2 = k + l;
+                    }
                 }
+                grid[x1, y1] = value2;
+                grid[x2, y2] = value1;
             }
         }
         private void CreateRiddleGrid()
         {
             //Copiar la anterior solvegrid
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    RiddleGrid[i, j] = _solvedGrid[i, j];
-                }
-            }
+            for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                RiddleGrid[i, j] = _solvedGrid[i, j];
 
             //borrar los numeros que no queremos
-            for (int i = 0; i < _piecesToErase; i++)
+            for (var i = 0; i < _piecesToErase; i++)
             {
-                int x1 = Random.Range(0, 9);
-                int y1 = Random.Range(0, 9);
+                var x1 = Random.Range(0, 9);
+                var y1 = Random.Range(0, 9);
                 //Si hay un cero lo tiro de nuevo hasta encontrar uno sin 0
                 while (RiddleGrid[x1, y1] == 0)
                 {
@@ -147,26 +136,18 @@ namespace Sudoku.Board
         }
         private bool HasCompletedGrid()
         {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    if (RiddleGrid[i, j] == 0)
-                        return false;
-                }
-            }
+            for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                if (RiddleGrid[i, j] == 0)
+                    return false;
             return true;
         }
         private bool HasWon()
         {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    if (RiddleGrid[i, j] != _solvedGrid[i, j])
-                        return false;
-                }
-            }
+            for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                if (RiddleGrid[i, j] != _solvedGrid[i, j])
+                    return false;
             return true;
         }
         private void CreateRiddleGrid(ref int[,] sGrid, ref int[,] rGrid)
@@ -174,10 +155,10 @@ namespace Sudoku.Board
             Array.Copy(sGrid, rGrid, sGrid.Length);
 
             //borrar los numeros que no queremos
-            for (int i = 0; i < _piecesToErase; i++)
+            for (var i = 0; i < _piecesToErase; i++)
             {
-                int x1 = Random.Range(0, 9);
-                int y1 = Random.Range(0, 9);
+                var x1 = Random.Range(0, 9);
+                var y1 = Random.Range(0, 9);
                 //Si hay un cero lo tiro de nuevo hasta encontrar uno sin 0
                 while (rGrid[x1, y1] == 0)
                 {
@@ -192,32 +173,24 @@ namespace Sudoku.Board
         #region BACKTRACKING
         private bool ColumnContainsNumber(int y, int value, ref int[,] grid)
         {
-            for (int x = 0; x < 9; x++)
-            {
+            for (var x = 0; x < 9; x++)
                 if (grid[x, y] == value)
                     return true;
-            }
             return false;
         }
         private bool RowContainsNumber(int x, int value, ref int[,] grid)
         {
-            for (int y = 0; y < 9; y++)
-            {
+            for (var y = 0; y < 9; y++)
                 if (grid[x, y] == value)
                     return true;
-            }
             return false;
         }
         private bool BlockContainsNumber(int x, int y, int value, ref int[,] grid)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    if (grid[x - (x % 3) + i, y - (y % 3) + j] == value)
-                        return true;
-                }
-            }
+            for (var i = 0; i < 3; i++)
+            for (var j = 0; j < 3; j++)
+                if (grid[x - x % 3 + i, y - y % 3 + j] == value)
+                    return true;
             return false;
         }
         private bool CheckAll(int x, int y, int value, ref int[,] grid)
@@ -229,29 +202,23 @@ namespace Sudoku.Board
         }
         private bool IsValidGrid(ref int[,] grid)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    if (grid[i, j] == 0)
-                    {
-                        return false;
-                    }
-                }
-            }
+            for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                if (grid[i, j] == 0)
+                    return false;
             return true;
         }
         private void FillGridBase(ref int[,] grid)
         {
-            List<int> rowValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            List<int> columnValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            int value = rowValues[Random.Range(0, rowValues.Count)];
+            var rowValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var columnValues = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var value = rowValues[Random.Range(0, rowValues.Count)];
             grid[0, 0] = value;
             rowValues.Remove(value);
             columnValues.Remove(value);
 
             //Rows
-            for (int i = 1; i < 9; i++)
+            for (var i = 1; i < 9; i++)
             {
                 value = rowValues[Random.Range(0, rowValues.Count)];
                 grid[i, 0] = value;
@@ -259,16 +226,12 @@ namespace Sudoku.Board
             }
 
             //Columns
-            for (int i = 1; i < 9; i++)
+            for (var i = 1; i < 9; i++)
             {
                 value = columnValues[Random.Range(0, columnValues.Count)];
                 if (i < 3)
-                {
                     while (BlockContainsNumber(0, 0, value, ref grid))
-                    {
                         value = columnValues[Random.Range(0, columnValues.Count)];
-                    }
-                }
                 grid[0, i] = value;
                 columnValues.Remove(value);
             }
@@ -278,43 +241,32 @@ namespace Sudoku.Board
             DebugGrid(ref grid);
             if (IsValidGrid(ref grid))
                 return true;
-            int x = 0;
-            int y = 0;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
+            var x = 0;
+            var y = 0;
+            for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                if (grid[i, j] == 0)
                 {
-                    if (grid[i, j] == 0)
-                    {
-                        x = i;
-                        y = j;
-                        break;
-                    }
+                    x = i;
+                    y = j;
+                    break;
                 }
-            }
-            List<int> possibilities = new List<int>();
+            var possibilities = new List<int>();
             possibilities = GetAllPossibilities(x, y, ref grid);
-            for (int p = 0; p < possibilities.Count; p++)
+            for (var p = 0; p < possibilities.Count; p++)
             {
                 grid[x, y] = possibilities[p]; //aca sucede la magic
-                if (SolveGrid(ref grid))
-                {
-                    return true;
-                }
+                if (SolveGrid(ref grid)) return true;
                 grid[x, y] = 0;
             }
             return false;
         }
         private List<int> GetAllPossibilities(int x, int y, ref int[,] grid)
         {
-            List<int> possibilities = new List<int>();
-            for (int val = 1; val <= 9; val++)
-            {
+            var possibilities = new List<int>();
+            for (var val = 1; val <= 9; val++)
                 if (CheckAll(x, y, val, ref grid))
-                {
                     possibilities.Add(val);
-                }
-            }
             return possibilities;
         }
         #endregion

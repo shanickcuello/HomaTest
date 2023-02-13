@@ -39,11 +39,21 @@ namespace Sudoku.Board
         {
             if (win)
             {
-                PopUpFactory.Instance.Create(TransitionToMenu, "Nice! You Win!", "Go to menu");
+                var buttonActions = new Dictionary<string, Action>
+                {
+                    { "Go to menu", TransitionToMenu }
+                };
+                var popUpProperties = new PopUpProperties("Nice! You Win!", buttonActions);
+                PopUpFactory.Instance.Create(popUpProperties);
             }
             else
             {
-                PopUpFactory.Instance.Create((() => { }), "Oops something is wrong, keep trying!");
+                var buttonActions = new Dictionary<string, Action>
+                {
+                    { "Ok", () => { } }
+                };
+                var popUpProperties = new PopUpProperties("Oops something is wrong, keep trying!", buttonActions);
+                PopUpFactory.Instance.Create(popUpProperties);
             }
         }
         private void TransitionToMenu()
@@ -56,7 +66,7 @@ namespace Sudoku.Board
         }
         private void CreateChunks()
         {
-            for (int i = 0; i < AmountOfChunks; i++)
+            for (var i = 0; i < AmountOfChunks; i++)
             {
                 var temporalChunk = Instantiate(chunkPrefab, transform);
                 chunks.Add(temporalChunk.transform);
@@ -64,19 +74,17 @@ namespace Sudoku.Board
         }
         private void CreateButtons()
         {
-            for (int i = 0; i < 9; i++)
+            for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
             {
-                for (int j = 0; j < 9; j++)
-                {
-                    GameObject newBtn = Instantiate(cellNumberButton);
-                    NumberField numField = newBtn.GetComponent<NumberField>();
-                    numField.SetValue(i, j, _riddleGrid[i, j], i + "," + j, _viewModel);
-                    newBtn.name = i + "," + j;
-                    if (_riddleGrid[i, j] == 0)
-                        fieldList.Add(numField);
-                    int chunkIndex = (i / 3) * 3 + j / 3;
-                    newBtn.transform.SetParent(chunks[chunkIndex], false);
-                }
+                var newBtn = Instantiate(cellNumberButton);
+                var numField = newBtn.GetComponent<NumberField>();
+                numField.SetValue(i, j, _riddleGrid[i, j], i + "," + j, _viewModel);
+                newBtn.name = i + "," + j;
+                if (_riddleGrid[i, j] == 0)
+                    fieldList.Add(numField);
+                var chunkIndex = i / 3 * 3 + j / 3;
+                newBtn.transform.SetParent(chunks[chunkIndex], false);
             }
         }
         public void SetDifficulty(IDifficultySettings difficultySettings)

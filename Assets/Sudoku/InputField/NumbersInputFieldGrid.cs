@@ -10,8 +10,8 @@ namespace Sudoku.InputField
         [SerializeField] private NumberInputField numberInputFieldPrefab;
         [SerializeField] private Button backButton;
         private const int NumberOfInputValues = 9;
-        NumberField _lastField;
-        private Stack<NumberField> _historyNumberfieldSetted = new Stack<NumberField>();
+        private NumberField _lastField;
+        private Stack<NumberField> _historyNumberfieldSetted = new();
         private void Awake()
         {
             Singleton();
@@ -43,12 +43,10 @@ namespace Sudoku.InputField
         }
         private void CreateInputsFieldNumbers()
         {
-            for (int i = 1; i <= NumberOfInputValues; i++)
-            {
+            for (var i = 1; i <= NumberOfInputValues; i++)
                 Instantiate(numberInputFieldPrefab, transform)
                     .SetInputValue(i)
                     .SetInputFieldGrid(this);
-            }
         }
         private void Start()
         {

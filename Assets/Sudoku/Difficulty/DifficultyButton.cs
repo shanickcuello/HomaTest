@@ -6,10 +6,10 @@ namespace Sudoku.Difficulty
 {
     public class DifficultyButton : MonoBehaviour
     {
-        private event Action<DifficultyButton> onDifficultySelected; 
+        private event Action<DifficultyButton> onDifficultySelected;
         private void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(()=> onDifficultySelected?.Invoke(this));
+            GetComponent<Button>().onClick.AddListener(() => onDifficultySelected?.Invoke(this));
         }
         public void SetDisplayName(string text)
         {

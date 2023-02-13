@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fd7cb130819345e8a8bdc5a613c2027, type: 3}
-  m_Name: Hard
+  m_Name: Not that hard
   m_EditorClassIdentifier: 
-  piecesToErase: 64
-  maxHints: 12
-  nameDisplay: Hard
+  piecesToErase: 75
+  maxHints: 5
+  nameDisplay: Not that hard

@@ -18,7 +18,7 @@ namespace EditorTest
         [Test]
         public void CallGridPreparedAfterInitialization()
         {
-            bool gridPreparedEventCalled = false;
+            var gridPreparedEventCalled = false;
             var viewModel = GivenBoardViewModel(() => gridPreparedEventCalled = true, _ => _ = true);
             viewModel.Init();
             Assert.AreEqual(true, gridPreparedEventCalled);
@@ -44,10 +44,7 @@ namespace EditorTest
         }
         private void WhenCallHint(BoardViewModel viewModel, List<INumberField> numberFields, int amountOfCalls)
         {
-            for (int i = 0; i < amountOfCalls; i++)
-            {
-                viewModel.ShowHint(numberFields);
-            }
+            for (var i = 0; i < amountOfCalls; i++) viewModel.ShowHint(numberFields);
         }
         private List<INumberField> GivenAListOfNumberFields()
         {

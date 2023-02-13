@@ -7,10 +7,9 @@ namespace Sudoku.Board
 {
     public class NumberField : MonoBehaviour, INumberField
     {
-        BoardViewModel board;
-        int x1, y1;
-        int value;
-        
+        private BoardViewModel board;
+        private int x1, y1;
+        private int value;
         public TextMeshProUGUI number;
         private void Awake()
         {
@@ -22,31 +21,31 @@ namespace Sudoku.Board
             this.y1 = y1;
             this.value = value;
             this.board = board;
-
-            number.text = (value != 0) ? value.ToString() : "";
-
-            if(value != 0)
+            number.text = value != 0 ? value.ToString() : "";
+            if (value != 0)
                 GetComponentInParent<Button>().interactable = false;
             else
-            {
                 number.color = Color.white;
-            }
         }
-
-        public void ButtonClick() => NumbersInputFieldGrid.Instance.SetLastField(this);
-
+        public void ButtonClick()
+        {
+            NumbersInputFieldGrid.Instance.SetLastField(this);
+        }
         public void ReceiveInput(int newValue)
         {
             value = newValue;
-            number.text = (value != 0) ? value.ToString() : "";
+            number.text = value != 0 ? value.ToString() : "";
             number.color = Color.black; //Este es un naranjita que me gusto jeje. #F06A00
             board.SetInputInRiddleAndCheckCompleted(x1, y1, value);
         }
-
-        public int GetX() => x1;
-
-        public int GetY() => y1;
-
+        public int GetX()
+        {
+            return x1;
+        }
+        public int GetY()
+        {
+            return y1;
+        }
         public void SetHint(int value)
         {
             this.value = value;
