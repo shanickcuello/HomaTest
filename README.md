@@ -1,4 +1,4 @@
-# Heading 1 # SUDOKU
+# SUDOKU # 
 
 I developed this sudoku in a week as a technical test to enter HomaGames. The key points were the UI, the generation algorithm for the matrices, and the tests.
 They did not ask me for test cases but I added them as my demonstration of knowledge about Test Driven Development and Unit Tests.
